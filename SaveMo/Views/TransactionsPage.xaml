@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:BasePage
+    x:Class="SaveMo.Views.TransactionsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:SaveMo.Views"
+    Title="Transactions"
+    BackgroundColor="{DynamicResource DynamicBackground}">
+
+    <VerticalStackLayout Spacing="12" Padding="12">
+        <!-- Header and Add Button -->
+        <HorizontalStackLayout Spacing="12">
+            <Label Text="Transactions" Style="{StaticResource Heading1}" HorizontalOptions="Fill" />
+            <Button
+                Text="+ New"
+                Clicked="OnAddNewClicked"
+                Style="{StaticResource AccentButtonStyle}"
+                Padding="12"
+                WidthRequest="80" />
+        </HorizontalStackLayout>
+
+        <!-- Add/Edit Form (shows when IsAddingMode is True) -->
+        <Border IsVisible="{Binding IsAddingMode}" Style="{StaticResource CardStyle}">
+            <VerticalStackLayout Spacing="12">
+                <Label Text="Transaction Details" FontSize="16" FontAttributes="Bold" />
+
+                <Picker
+                    Title="Type"
+                    SelectedIndex="{Binding NewType, Converter={StaticResource TransactionTypeIndexConverter}}"
+                    ItemsSource="{Binding TypeOptions}" />
+
+                <Entry
+                    Placeholder="Amount"
+                    Text="{Binding NewAmount}"
+                    Keyboard="Numeric" />
+
+                <Picker
+                    Title="Category"
+                    SelectedItem="{Binding NewCategory}"
+                    ItemsSource="{Binding Categories}" />
+
+                <DatePicker Date="{Binding NewDate}" />
+
+                <Entry
+                    Placeholder="Note (optional)"
+                    Text="{Binding NewNote}" />
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                    <Button
+                        Grid.Column="0"
+                        Text="Save"
+                        Command="{Binding UpdateTransactionCommand}"
+                        IsVisible="{Binding SelectedTransaction, Converter={StaticResource IsNotNullConverter}}"
+                        Style="{StaticResource AccentButtonStyle}" />
+                    <Button
+                        Grid.Column="0"
+                        Text="Add"
+                        Command="{Binding AddTransactionCommand}"
+                        IsVisible="{Binding SelectedTransaction, Converter={StaticResource IsNullConverter}}"
+                        Style="{StaticResource AccentButtonStyle}" />
+                    <Button
+                        Grid.Column="1"
+                        Text="Cancel"
+                        Command="{Binding CancelCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}" />
+                </Grid>
+
+                <Button
+                    Text="Delete"
+                    Command="{Binding DeleteTransactionCommand}"
+                    IsVisible="{Binding SelectedTransaction, Converter={StaticResource IsNotNullConverter}}"
+                    BackgroundColor="{StaticResource Error}" />
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- Transactions List -->
+        <CollectionView ItemsSource="{Binding Transactions}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView x:Name="TransactionSwipeView">
+                        <SwipeView.LeftItems>
+                            <SwipeItems Mode="Execute" SwipeBehaviorOnInvoked="RemainOpen">
+                                <SwipeItem
+                                    Text="Delete"
+                                    BackgroundColor="{StaticResource Error}"
+                                    CommandParameter="{Binding Id}"
+                                    Invoked="OnSwipeDelete" />
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+
+                        <Border
+                            Style="{StaticResource SubtleCardStyle}"
+                            Padding="12">
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="OnCardLongPressed"
+                                    NumberOfTapsRequired="1"
+                                    CommandParameter="{Binding .}" />
+                            </Border.GestureRecognizers>
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                                <VerticalStackLayout Grid.Column="0" Spacing="4">
+                                    <Label
+                                        Text="{Binding Category}"
+                                        FontAttributes="Bold"
+                                        FontSize="14"
+                                        TextColor="{StaticResource TextDark}" />
+                                    <Label
+                                        Text="{Binding Date, StringFormat='{0:MMM dd, yyyy}'}"
+                                        Style="{StaticResource Caption}" />
+                                    <Label
+                                        Text="{Binding Note}"
+                                        Style="{StaticResource Caption}"
+                                        IsVisible="{Binding Note, Converter={StaticResource IsNotNullConverter}}" />
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                    <Label
+                                        Text="{Binding Amount, StringFormat='${0:F2}'}"
+                                        FontAttributes="Bold"
+                                        FontSize="14"
+                                        TextColor="{Binding Type, Converter={StaticResource TransactionTypeColorConverter}}" />
+                                    <Button
+                                        Text="Edit"
+                                        FontSize="11"
+                                        Padding="8,4"
+                                        WidthRequest="50"
+                                        Clicked="OnEditClicked"
+                                        Style="{StaticResource AccentButtonStyle}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</views:BasePage>

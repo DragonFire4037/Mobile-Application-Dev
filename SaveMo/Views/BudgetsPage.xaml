@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:BasePage
+    x:Class="SaveMo.Views.BudgetsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:SaveMo.Views"
+    Title="Budgets"
+    BackgroundColor="{DynamicResource DynamicBackground}">
+
+    <VerticalStackLayout Spacing="12" Padding="12">
+        <!-- Header and Add Button -->
+        <HorizontalStackLayout Spacing="12">
+            <Label Text="Budgets" Style="{StaticResource Heading1}" HorizontalOptions="Fill" />
+            <Button
+                Text="+ New"
+                Clicked="OnAddNewClicked"
+                Style="{StaticResource AccentButtonStyle}"
+                Padding="12"
+                WidthRequest="80" />
+        </HorizontalStackLayout>
+
+        <!-- Add/Edit Form -->
+        <Border IsVisible="{Binding IsAddingMode}" Style="{StaticResource CardStyle}">
+            <VerticalStackLayout Spacing="12">
+                <Label Text="Budget Details" FontSize="16" FontAttributes="Bold" />
+
+                <Picker
+                    Title="Category"
+                    SelectedItem="{Binding NewCategory}"
+                    ItemsSource="{Binding Categories}" />
+
+                <Entry
+                    Placeholder="Monthly Limit"
+                    Text="{Binding NewMonthlyLimit}"
+                    Keyboard="Numeric" />
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                    <Button
+                        Grid.Column="0"
+                        Text="Save"
+                        Command="{Binding UpdateBudgetCommand}"
+                        IsVisible="{Binding SelectedBudget, Converter={StaticResource IsNotNullConverter}}"
+                        Style="{StaticResource AccentButtonStyle}" />
+                    <Button
+                        Grid.Column="0"
+                        Text="Add"
+                        Command="{Binding AddBudgetCommand}"
+                        IsVisible="{Binding SelectedBudget, Converter={StaticResource IsNullConverter}}"
+                        Style="{StaticResource AccentButtonStyle}" />
+                    <Button
+                        Grid.Column="1"
+                        Text="Cancel"
+                        Command="{Binding CancelCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}" />
+                </Grid>
+
+                <Button
+                    Text="Delete"
+                    Command="{Binding DeleteBudgetCommand}"
+                    IsVisible="{Binding SelectedBudget, Converter={StaticResource IsNotNullConverter}}"
+                    BackgroundColor="{StaticResource Error}" />
+            </VerticalStackLayout>
+        </Border>
+
+        <!-- Budgets List -->
+        <CollectionView ItemsSource="{Binding Budgets}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Style="{StaticResource SubtleCardStyle}">
+                        <VerticalStackLayout Spacing="8">
+                            <HorizontalStackLayout Spacing="12">
+                                <VerticalStackLayout Spacing="4" HorizontalOptions="Fill">
+                                    <Label
+                                        Text="{Binding Category}"
+                                        FontAttributes="Bold"
+                                        FontSize="14"
+                                        TextColor="{StaticResource TextDark}" />
+                                    <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                                        <Label
+                                            Grid.Column="0"
+                                            Text="{Binding CurrentSpend, StringFormat='Spent: ${0:F2}'}"
+                                            Style="{StaticResource Caption}" />
+                                        <Label
+                                            Grid.Column="1"
+                                            Text="{Binding MonthlyLimit, StringFormat='Limit: ${0:F2}'}"
+                                            Style="{StaticResource Caption}" />
+                                    </Grid>
+                                </VerticalStackLayout>
+                                <Button
+                                    Text="Edit"
+                                    FontSize="11"
+                                    Padding="8,4"
+                                    WidthRequest="50"
+                                    Clicked="OnEditClicked"
+                                    Style="{StaticResource AccentButtonStyle}" />
+                            </HorizontalStackLayout>
+
+                            <ProgressBar
+                                Progress="{Binding Progress, Converter={StaticResource ProgressConverter}}"
+                                ProgressColor="{Binding ProgressColor}" />
+
+                            <Label
+                                Text="{Binding Remaining, StringFormat='Remaining: ${0:F2}'}"
+                                Style="{StaticResource Caption}"
+                                TextColor="{Binding ProgressColor}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</views:BasePage>

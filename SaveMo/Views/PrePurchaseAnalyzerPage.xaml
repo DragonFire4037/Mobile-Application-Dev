@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<views:BasePage
+    x:Class="SaveMo.Views.PrePurchaseAnalyzerPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:SaveMo.Views"
+    Title="Pre-Purchase Analyzer"
+    BackgroundColor="{DynamicResource DynamicBackground}">
+
+    <ScrollView Padding="12" BackgroundColor="{DynamicResource DynamicBackground}">
+        <VerticalStackLayout Spacing="16">
+                <!-- Header -->
+                <Label Text="Before You Buy" Style="{StaticResource Heading1}" />
+                <Label
+                    Text="Analyze the long-term cost of your purchase and its opportunity cost if invested instead."
+                    Style="{StaticResource BodyText}" />
+
+                <!-- Input Form -->
+                <Border Style="{StaticResource CardStyle}">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Purchase Analysis" Style="{StaticResource Heading2}" />
+
+                        <!-- Item Cost -->
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Item Cost ($)" FontSize="12" FontAttributes="Bold" />
+                            <Entry
+                                Placeholder="Enter purchase amount"
+                                Text="{Binding ItemCost}"
+                                Keyboard="Numeric"
+                                BackgroundColor="{StaticResource Gray100}" />
+                        </VerticalStackLayout>
+
+                        <!-- Months to Analyze -->
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Analysis Period (Months)" FontSize="12" FontAttributes="Bold" />
+                            <Picker
+                                SelectedIndex="{Binding MonthsToAnalyze, Converter={StaticResource MonthsPickerConverter}}">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>1 month</x:String>
+                                        <x:String>3 months</x:String>
+                                        <x:String>6 months</x:String>
+                                        <x:String>12 months (1 year)</x:String>
+                                        <x:String>24 months (2 years)</x:String>
+                                        <x:String>36 months (3 years)</x:String>
+                                        <x:String>60 months (5 years)</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </VerticalStackLayout>
+
+                        <!-- Annual Return Rate -->
+                        <VerticalStackLayout Spacing="4">
+                            <HorizontalStackLayout Spacing="4">
+                                <Label Text="Investment Return Rate (%)" FontSize="12" FontAttributes="Bold" />
+                                <Label Text="(annual)" Style="{StaticResource Caption}" />
+                            </HorizontalStackLayout>
+                            <Slider
+                                Minimum="0"
+                                Maximum="10"
+                                Value="{Binding AnnualReturnRate}"
+                                WidthRequest="200" />
+                            <Label
+                                Text="{Binding AnnualReturnRate, StringFormat='{0:F1}%'}"
+                                Style="{StaticResource Caption}" />
+                        </VerticalStackLayout>
+
+                        <!-- Analyze Button -->
+                        <Button
+                            Text="Analyze Purchase"
+                            Command="{Binding AnalyzeCommand}"
+                            Style="{StaticResource AccentButtonStyle}" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Analysis Results -->
+                <Border
+                    IsVisible="{Binding HasAnalyzed}"
+                    Style="{StaticResource CardStyle}"
+                    BackgroundColor="{StaticResource Accent}">
+                    <VerticalStackLayout Spacing="12">
+                        <Label Text="Analysis Results" Style="{StaticResource Heading2}" />
+
+                        <!-- Summary Message -->
+                        <Label
+                            Text="{Binding AnalysisResult.Summary}"
+                            Style="{StaticResource BodyText}"
+                            FontAttributes="Bold"
+                            TextColor="{StaticResource Primary}" />
+
+                        <!-- Cost Breakdown -->
+                        <Border Padding="12" BackgroundColor="{StaticResource Gray100}" StrokeThickness="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8"/>
+                            </Border.StrokeShape>
+                            <VerticalStackLayout Spacing="8">
+                            <Label Text="Cost Breakdown" FontAttributes="Bold" FontSize="14" />
+
+                            <HorizontalStackLayout Spacing="12">
+                                <VerticalStackLayout HorizontalOptions="Fill">
+                                    <Label Text="Item Cost" Style="{StaticResource Caption}" />
+                                    <Label
+                                        Text="{Binding AnalysisResult.ItemCost, StringFormat='${0:F2}'}"
+                                        FontSize="14"
+                                        FontAttributes="Bold"
+                                        TextColor="{StaticResource Primary}" />
+                                </VerticalStackLayout>
+                                <VerticalStackLayout HorizontalOptions="Fill">
+                                    <Label Text="Months" Style="{StaticResource Caption}" />
+                                    <Label
+                                        Text="{Binding AnalysisResult.MonthsToAnalyze}"
+                                        FontSize="14"
+                                        FontAttributes="Bold"
+                                        TextColor="{StaticResource Primary}" />
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+
+                            <BoxView HeightRequest="1" Color="{StaticResource Gray300}" />
+
+                            <HorizontalStackLayout Spacing="12">
+                                <VerticalStackLayout HorizontalOptions="Fill">
+                                    <Label Text="Total Direct Cost" Style="{StaticResource Caption}" />
+                                    <Label
+                                        Text="{Binding AnalysisResult.TotalCostOverPeriod, StringFormat='${0:F2}'}"
+                                        FontSize="14"
+                                        FontAttributes="Bold"
+                                        TextColor="{StaticResource Warning}" />
+                                </VerticalStackLayout>
+                                <VerticalStackLayout HorizontalOptions="Fill">
+                                    <Label Text="Opportunity Cost" Style="{StaticResource Caption}" />
+                                    <Label
+                                        Text="{Binding AnalysisResult.OpportunityCost, StringFormat='${0:F2}'}"
+                                        FontSize="14"
+                                        FontAttributes="Bold"
+                                        TextColor="{StaticResource Error}" />
+                                </VerticalStackLayout>
+                            </HorizontalStackLayout>
+
+                            <BoxView HeightRequest="1" Color="{StaticResource Gray300}" />
+
+                            <VerticalStackLayout Spacing="4">
+                                <Label Text="Total Cost (Including Opportunity Cost)" Style="{StaticResource Caption}" FontAttributes="Bold" />
+                                <Label
+                                    Text="{Binding AnalysisResult.TotalCostWithOpportunityCost, StringFormat='${0:F2}'}"
+                                    FontSize="20"
+                                    FontAttributes="Bold"
+                                    TextColor="{StaticResource Error}" />
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Interpretation -->
+                        <Border Style="{StaticResource SubtleCardStyle}">
+                            <VerticalStackLayout Spacing="8">
+                                <Label Text="💡 What This Means" FontAttributes="Bold" FontSize="13" />
+                                <Label
+                                    Text="If you spent this money on a purchase instead of investing it at the assumed return rate, you would lose the amount shown above in potential growth."
+                                    Style="{StaticResource BodyText}" />
+                                <Label
+                                    Text="Consider whether this purchase is worth the total cost, including what you could have earned by investing the money instead."
+                                    Style="{StaticResource BodyText}" />
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Clear Button -->
+                        <Button
+                            Text="New Analysis"
+                            Command="{Binding ClearCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}" />
+                    </VerticalStackLayout>
+                </Border>
+                    </VerticalStackLayout>
+                </ScrollView>
+            </views:BasePage>

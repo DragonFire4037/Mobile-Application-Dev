@@ -1,0 +1,23 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SaveMo"
+             xmlns:converters="clr-namespace:SaveMo.Converters"
+             x:Class="SaveMo.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Converters -->
+            <converters:TransactionTypeColorConverter x:Key="TransactionTypeColorConverter" />
+            <converters:TransactionTypeIndexConverter x:Key="TransactionTypeIndexConverter" />
+            <converters:ProgressConverter x:Key="ProgressConverter" />
+            <converters:PercentageConverter x:Key="PercentageConverter" />
+            <converters:IsNullConverter x:Key="IsNullConverter" />
+            <converters:IsNotNullConverter x:Key="IsNotNullConverter" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

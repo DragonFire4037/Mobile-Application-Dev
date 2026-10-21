@@ -1,0 +1,111 @@
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio cache/options directory
+.vs/
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Visual Studio user-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Test Results
+[Tt]estResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+*.nuget.props
+*.nuget.targets
+.nuget/
+
+# NuGet lock files
+packages.lock.json
+
+# MAUI specific
+.maui/
+.maui-cache/
+bin/
+obj/
+publish/
+
+# Android specific
+*.apk
+*.aab
+[Bb]in/[Aa]ndroid*/
+[Oo]bj/[Aa]ndroid*/
+
+# iOS/macOS specific
+[Bb]in/[Ii]Phone*/
+[Oo]bj/[Ii]Phone*/
+.xcodeproj/
+.xcworkspace/
+*.ipa
+*.dSYM/
+
+# Windows specific
+Thumbs.db
+.DS_Store
+
+# IDE specific files
+*.sln.iml
+.idea/
+.rider/
+*.swp
+*.swo
+*~
+
+# Rider
+.idea/
+*.sln.iml
+Rider*/
+
+# ReSharper
+_ReSharper*/
+*.DotSettings.user
+
+# Local user settings
+launchSettings.json
+appsettings.local.json
+secrets.json
+
+# Runtime data
+*.db
+*.sqlite
+*.sqlite3
+*.ldb
+
+# Microsoft Azure
+*.PublishSettings
+*.pubxml
+
+# Backup files
+*.bak
+*.backup
+
+# Temporary files
+*.tmp
+*.temp
+*.log

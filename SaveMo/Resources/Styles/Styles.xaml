@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- SaveMo Themed Styles - Industrial Revolution Aesthetic -->
+
+    <!-- Activity Indicator -->
+    <Style TargetType="ActivityIndicator">
+        <Setter Property="Color" Value="{StaticResource Accent}" />
+    </Style>
+
+    <!-- Indicator View -->
+    <Style TargetType="IndicatorView">
+        <Setter Property="IndicatorColor" Value="{StaticResource Gray300}"/>
+        <Setter Property="SelectedIndicatorColor" Value="{StaticResource Accent}"/>
+    </Style>
+
+    <!-- Border -->
+    <Style TargetType="Border">
+        <Setter Property="Stroke" Value="{StaticResource Gray400}" />
+        <Setter Property="StrokeShape" Value="RoundRectangle"/>
+        <Setter Property="StrokeThickness" Value="1"/>
+    </Style>
+
+    <!-- BoxView -->
+    <Style TargetType="BoxView">
+        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+    </Style>
+
+    <!-- Button - Primary (SaveMo Brown) -->
+    <Style TargetType="Button" x:Key="PrimaryButtonStyle">
+        <Setter Property="TextColor" Value="{StaticResource TextLight}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="BorderWidth" Value="0"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="16,12"/>
+        <Setter Property="MinimumHeightRequest" Value="48"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+    </Style>
+
+    <!-- Button - Accent (Brass Gold) -->
+    <Style TargetType="Button" x:Key="AccentButtonStyle">
+        <Setter Property="TextColor" Value="{StaticResource Primary}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Accent}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="BorderWidth" Value="0"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="Padding" Value="16,12"/>
+        <Setter Property="MinimumHeightRequest" Value="48"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+    </Style>
+
+    <!-- Button - Default -->
+    <Style TargetType="Button">
+        <Setter Property="TextColor" Value="{StaticResource TextLight}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="BorderWidth" Value="0"/>
+        <Setter Property="CornerRadius" Value="6"/>
+        <Setter Property="Padding" Value="12,8"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+    </Style>
+
+    <!-- CheckBox -->
+    <Style TargetType="CheckBox">
+        <Setter Property="Color" Value="{StaticResource Accent}" />
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+    </Style>
+
+    <!-- DatePicker -->
+    <Style TargetType="DatePicker">
+        <Setter Property="TextColor" Value="{StaticResource TextDark}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Gray100}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+    </Style>
+
+    <!-- Editor -->
+    <Style TargetType="Editor">
+        <Setter Property="TextColor" Value="{StaticResource TextDark}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Gray100}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource TextSecondary}" />
+        <Setter Property="MinimumHeightRequest" Value="100"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+    </Style>
+
+    <!-- Entry -->
+    <Style TargetType="Entry">
+        <Setter Property="TextColor" Value="{StaticResource TextDark}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Gray100}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource TextSecondary}" />
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+    </Style>
+
+    <!-- Label -->
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextDark}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <!-- Label - Heading 1 -->
+    <Style TargetType="Label" x:Key="Heading1">
+        <Setter Property="TextColor" Value="{StaticResource Primary}" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold"/>
+        <Setter Property="FontSize" Value="28"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="Margin" Value="0,0,0,8"/>
+    </Style>
+
+    <!-- Label - Heading 2 -->
+    <Style TargetType="Label" x:Key="Heading2">
+        <Setter Property="TextColor" Value="{StaticResource Secondary}" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="Margin" Value="0,0,0,6"/>
+    </Style>
+
+    <!-- Label - Heading 3 -->
+    <Style TargetType="Label" x:Key="Heading3">
+        <Setter Property="TextColor" Value="{StaticResource Primary}" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+
+    <!-- Label - Body Text -->
+    <Style TargetType="Label" x:Key="BodyText">
+        <Setter Property="TextColor" Value="{StaticResource TextDark}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="LineHeight" Value="1.5"/>
+    </Style>
+
+    <!-- Label - Caption -->
+    <Style TargetType="Label" x:Key="Caption">
+        <Setter Property="TextColor" Value="{StaticResource TextSecondary}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+
+    <!-- Label - Large Amount/Currency -->
+    <Style TargetType="Label" x:Key="CurrencyLarge">
+        <Setter Property="TextColor" Value="{StaticResource Accent}" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+    </Style>
+
+    <!-- Picker -->
+    <Style TargetType="Picker">
+        <Setter Property="TextColor" Value="{StaticResource TextDark}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Gray100}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+    </Style>
+
+    <!-- ProgressBar -->
+    <Style TargetType="ProgressBar">
+        <Setter Property="ProgressColor" Value="{StaticResource Accent}" />
+    </Style>
+
+    <!-- ScrollView -->
+    <Style TargetType="ScrollView">
+        <Setter Property="BackgroundColor" Value="{StaticResource White}"/>
+    </Style>
+
+    <!-- Slider -->
+    <Style TargetType="Slider">
+        <Setter Property="MinimumTrackColor" Value="{StaticResource Accent}"/>
+        <Setter Property="MaximumTrackColor" Value="{StaticResource Gray300}"/>
+        <Setter Property="ThumbColor" Value="{StaticResource Accent}"/>
+    </Style>
+
+    <!-- Stepper -->
+    <Style TargetType="Stepper">
+        <Setter Property="BackgroundColor" Value="{StaticResource Gray100}"/>
+    </Style>
+
+    <!-- TimePicker -->
+    <Style TargetType="TimePicker">
+        <Setter Property="TextColor" Value="{StaticResource TextDark}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Gray100}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+    </Style>
+
+    <!-- Navigation Bar / App Shell -->
+    <Style TargetType="Shell" ApplyToDerivedTypes="True">
+        <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}"/>
+        <Setter Property="Shell.ForegroundColor" Value="{StaticResource TextLight}"/>
+        <Setter Property="Shell.TitleColor" Value="{StaticResource Accent}"/>
+        <Setter Property="Shell.DisabledColor" Value="{StaticResource Gray400}"/>
+        <Setter Property="Shell.UnselectedColor" Value="{StaticResource Gray300}"/>
+    </Style>
+
+    <!-- Border - Card Style -->
+    <Style TargetType="Border" x:Key="CardStyle">
+        <Setter Property="BackgroundColor" Value="{StaticResource White}"/>
+        <Setter Property="Stroke" Value="{StaticResource Gray200}"/>
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="StrokeShape" Value="RoundRectangle 12,12,12,12"/>
+        <Setter Property="Padding" Value="16"/>
+        <Setter Property="Margin" Value="8"/>
+    </Style>
+
+    <!-- Border - Subtle Card -->
+    <Style TargetType="Border" x:Key="SubtleCardStyle">
+        <Setter Property="BackgroundColor" Value="{StaticResource Gray100}"/>
+        <Setter Property="Stroke" Value="{StaticResource Gray200}"/>
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="StrokeShape" Value="RoundRectangle 8,8,8,8"/>
+        <Setter Property="Padding" Value="12"/>
+        <Setter Property="Margin" Value="4"/>
+    </Style>
+
+</ResourceDictionary>
