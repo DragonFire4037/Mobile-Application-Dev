@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SaveMo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+5f0150947227a932b9c13af5226824bbd8652f56")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+f211a1235293165459d588281e08e6bbde5ed207")]
 [assembly: System.Reflection.AssemblyProductAttribute("SaveMo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SaveMo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

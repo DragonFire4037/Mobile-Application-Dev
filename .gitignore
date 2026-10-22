@@ -109,3 +109,7 @@ secrets.json
 *.tmp
 *.temp
 *.log
+
+# SaveMo API runtime data
+/SaveMo.Api/Data/*.json
+/SaveMo.Api/Data/*.tmp
